@@ -1,0 +1,22 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:d="/lib/jenkins">
+    <l:layout title="User Status">
+        <l:main-panel>
+            <h1>User Status</h1>
+            <table>
+                <tr>
+                    <td>Current User</td>
+                    <td>${it.currentUser}</td>
+                </tr>
+                <tr>
+                    <td>Is Admin</td>
+                    <td>${it.isAdmin}</td>
+                </tr>
+                <tr>
+                    <td>Is Anonymous</td>
+                    <td>${it.isAnonymous}</td>
+                </tr>
+            </table>
+        </l:main-panel>
+    </l:layout>
+</j:jelly>
