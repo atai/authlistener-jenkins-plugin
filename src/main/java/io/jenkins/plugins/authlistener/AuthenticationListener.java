@@ -19,11 +19,13 @@ public class AuthenticationListener extends SecurityListener {
             if (property != null) {
                 try {
                     property = new LastLoginProperty(System.currentTimeMillis());
+                    LOGGER.info("Added LastLoginProperty to user and save logged in time to profile for " + username);
                 } catch (Exception e) {
                     LOGGER.severe("Failed to add LastLoginProperty: " + e.getMessage());
                 }
             } else {
                 property.setLastLoginTime(System.currentTimeMillis());
+                LOGGER.info("Logged in time update in user profile for " + username);
             }
         }
     }

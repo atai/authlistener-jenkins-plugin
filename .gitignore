@@ -17,6 +17,6 @@ work
 # Ignore all in Jenkins_home dir except init scripts and config.xml
 jenkins_home/*
 !jenkins_home/init.groovy.d/
-!jenknis_home/users/users.xml
 !jenkins_home/users/**/*.xml
 !config.xml
+!/jenkins_home/users/users.xml

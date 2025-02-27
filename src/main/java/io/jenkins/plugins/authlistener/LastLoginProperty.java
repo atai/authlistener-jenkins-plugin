@@ -30,6 +30,7 @@ public class LastLoginProperty extends UserProperty {
             e.printStackTrace();
         }
     }
+
     @Extension
     public static final class DescriptorImpl extends UserPropertyDescriptor {
         @Override
@@ -38,18 +39,18 @@ public class LastLoginProperty extends UserProperty {
         }
 
         @Override
-        public boolean isEnabled(){
+        public boolean isEnabled() {
             return true;
         }
 
         @Override
-        public String getDisplayName(){
+        public String getDisplayName() {
             return "Last Login Timestamp";
         }
 
         @Override
-        public UserProperty newInstance(StaplerRequest req, JSONObject formData){
-            return new LastLoginProperty(System.currentTimeMillis());
+        public UserProperty newInstance(StaplerRequest req, JSONObject formData) {
+            return req.bindJSON(LastLoginProperty.class, formData);
         }
     }
 }

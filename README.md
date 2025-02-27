@@ -18,9 +18,11 @@ Report issues and enhancements in the [Jenkins issue tracker](https://issues.jen
 
 ## Contributing
 
-TODO review the default [CONTRIBUTING](https://github.com/jenkinsci/.github/blob/master/CONTRIBUTING.md) file and make sure it is appropriate for your plugin, if not then add your own one adapted from the base file
+To start local Jenkins instance for development, run:
 
-Refer to our [contribution guidelines](https://github.com/jenkinsci/.github/blob/master/CONTRIBUTING.md)
+```bash
+ mvn hpi:run -DJENKINS_HOME=".\jenkins_home"
+```
 
 ## LICENSE
 
