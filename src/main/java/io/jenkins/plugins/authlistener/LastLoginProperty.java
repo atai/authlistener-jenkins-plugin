@@ -4,11 +4,10 @@ import hudson.Extension;
 import hudson.model.User;
 import hudson.model.UserProperty;
 import hudson.model.UserPropertyDescriptor;
+import java.io.IOException;
 import net.sf.json.JSONObject;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.StaplerRequest;
-
-import java.io.IOException;
 
 public class LastLoginProperty extends UserProperty {
     private long lastLoginTime;
@@ -50,6 +49,9 @@ public class LastLoginProperty extends UserProperty {
 
         @Override
         public UserProperty newInstance(StaplerRequest req, JSONObject formData) {
+            if (req == null) {
+                throw new IllegalArgumentException("req is null");
+            }
             return req.bindJSON(LastLoginProperty.class, formData);
         }
     }

@@ -2,9 +2,8 @@ package io.jenkins.plugins.authlistener;
 
 import hudson.Extension;
 import hudson.model.User;
-import jenkins.security.SecurityListener;
-
 import java.util.logging.Logger;
+import jenkins.security.SecurityListener;
 
 @Extension
 public class AuthenticationListener extends SecurityListener {
@@ -18,14 +17,14 @@ public class AuthenticationListener extends SecurityListener {
             LastLoginProperty property = user.getProperty(LastLoginProperty.class);
             if (property != null) {
                 try {
-                    property = new LastLoginProperty(System.currentTimeMillis());
+                    user.addProperty(new LastLoginProperty(System.currentTimeMillis()));
+                    user.save();
                     LOGGER.info("Added LastLoginProperty to user and save logged in time to profile for " + username);
                 } catch (Exception e) {
-                    LOGGER.severe("Failed to add LastLoginProperty: " + e.getMessage());
+                    LOGGER.severe("Failed to add LastLoginProperty value: " + e.getMessage());
                 }
             } else {
-                property.setLastLoginTime(System.currentTimeMillis());
-                LOGGER.info("Logged in time update in user profile for " + username);
+                LOGGER.severe("There is no LastLoginProperty.class in user profile.");
             }
         }
     }
